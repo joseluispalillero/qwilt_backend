@@ -18,4 +18,4 @@ const propertieSchema = new Schema({
     versionKey: false
 });
 
-module.exports = model('Propertie', propertieSchema);
+module.exports = model('Properties', propertieSchema);
