@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { createPropertie, getAllProperties, getOnePropertie, updatePropertie, deletePropertie } = require('../controllers/propertieController')
+const { createPropertie, getAllProperties, getOnePropertie, updatePropertie, deletePropertie } = require('../controllers/propertiesController')
 
 
 router.post('/create', createPropertie)

@@ -1,4 +1,4 @@
-const Propertie = require('../models/Propertie')
+const Propertie = require('../models/Properties')
 
 exports.createPropertie = (req, res, next) => {
 
