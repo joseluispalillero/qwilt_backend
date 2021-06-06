@@ -2,16 +2,14 @@ const { Schema, model } = require('mongoose');
 
 const propertieSchema = new Schema({
     location: String,
+    name: String,
     description: String,
-    features: [String],
-    type: { type: String, enum: ['hdtvs', 'accesories', 'computers', 'audio', 'smartphones'] },
-    price: Number,
-    services: String,
+    targetRent: Number,
+    currentRent: Number,
     photos: [String],
-    info: String,
-    userId: {
+    portfolioId: {
         type: Schema.Types.ObjectId,
-        ref: "User"
+        ref: "Portfolio"
     },
 }, {
     timestamps: true,
