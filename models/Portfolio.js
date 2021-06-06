@@ -1,11 +1,13 @@
 const { Schema, model } = require('mongoose');
 
 const portfolioSchema = new Schema({
-    bankAccount: String,
-    legalDocs: [String],
-    contactId: {
+    owner: String,
+    nickname: String,
+    capacityRatio: String,
+    docs: [String],
+    owner: {
         type: Schema.Types.ObjectId,
-        ref: "Contact"
+        ref: "User"
     },
 }, {
     timestamps: true,
