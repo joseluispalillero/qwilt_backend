@@ -3,15 +3,15 @@ const PLM = require('passport-local-mongoose');
 
 const userSchema = new Schema({
     email: String,
-    name: String,
+    firstName: String,
+    lastName: String,
     address: String,
-    contact: String,
     phone: Number,
     mobile: Number,
     img: String,
     role: {
         type: String,
-        enum: ['SUPER-ADMIN', 'ADMIN', 'TEAM-MATE', 'CLIENT'],
+        enum: ['ADMIN'],
         default: 'ADMIN'
     },
 }, {

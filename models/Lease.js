@@ -10,7 +10,7 @@ const leaseSchema = new Schema({
     },
     propertieId: {
         type: Schema.Types.ObjectId,
-        ref: "Propertie"
+        ref: "Property"
     },
 }, {
     timestamps: true,
