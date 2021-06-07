@@ -4,10 +4,14 @@ const contactSchema = new Schema({
     name: String,
     email: String,
     phone: String,
-    type: String,
-    propertieId: {
+    type: {
+        type: String,
+        enum: ['Tenant', 'Landlord', 'Property Manager', 'Interested'],
+        default: 'Landlord'
+    },
+    propertyId: {
         type: Schema.Types.ObjectId,
-        ref: "Propertie"
+        ref: "Property"
     },
     userId: {
         type: Schema.Types.ObjectId,
