@@ -1,12 +1,11 @@
 const router = require('express').Router();
-const { createPropertie, getAllProperties, getOnePropertie, updatePropertie, deletePropertie } = require('../controllers/propertiesController')
+const { createProperty, getAllProperties, getOneProperty, updateProperty, deleteProperty } = require('../controllers/propertiesController')
 
-
-router.post('/create', createPropertie)
+router.post('/create', createProperty)
 router.get('/all', getAllProperties)
-router.get('/detail/:id', getOnePropertie)
-router.patch('/update/:id', updatePropertie)
-router.delete('/delete/:id', deletePropertie)
+router.get('/detail/:id', getOneProperty)
+router.patch('/update/:id', updateProperty)
+router.delete('/delete/:id', deleteProperty)
 
 
 module.exports = router;
