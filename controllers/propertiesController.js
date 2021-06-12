@@ -33,3 +33,9 @@ exports.deleteProperty = (req, res, next) => {
         .then(Property => res.status(200).json({ Property }))
         .catch(err => res.status(500).json({ err }))
 }
+
+exports.getStatusProperty = (req, res, next) => {
+    Property.find({status : 'Available'})
+        .then(Properties => res.status(200).json({ Properties }))
+        .catch(err => res.status(500).json({ err }))
+}

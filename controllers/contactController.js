@@ -33,3 +33,9 @@ exports.deleteContact = (req, res, next) => {
         .then(Contact => res.status(200).json({ Contact }))
         .catch(err => res.status(500).json({ err }))
 }
+
+exports.getTypeContacts = (req, res, next) => {
+    Contact.find({type : 'Interested', type : 'Tenant'})
+        .then(Contact => res.status(200).json({ Contact }))
+        .catch(err => res.status(500).json({ err }))
+}
