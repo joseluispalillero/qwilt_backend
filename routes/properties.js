@@ -7,6 +7,5 @@ router.get('/detail/:id', getOneProperty)
 router.patch('/update/:id', updateProperty)
 router.delete('/delete/:id', deleteProperty)
 router.get('/status/', getStatusProperty)
-//router.get('/status/:estatus', statusProperties)
 
 module.exports = router;
