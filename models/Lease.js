@@ -6,6 +6,7 @@ const leaseSchema = new Schema({
     startDate: Date,
     endDate: Date,
     rentalRate: Number,
+    docs: [String],
     contactId: {
         type: Schema.Types.ObjectId,
         ref: "Contact"

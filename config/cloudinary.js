@@ -12,7 +12,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
     cloudinary,
     folder: 'Images qwilt',
-    allowedFormats: ['jpg', 'png'],
+    allowedFormats: ['jpg', 'png', 'pdf', 'docx', 'doc'],
     filename: (req, file, cb) => {
         cb(null, file.originalname)
     }
