@@ -15,6 +15,7 @@ const leaseSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Property"
     },
+    occupancyRatio: Number
 }, {
     timestamps: true,
     versionKey: false
