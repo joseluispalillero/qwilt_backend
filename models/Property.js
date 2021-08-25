@@ -16,6 +16,7 @@ const propertySchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Portfolio"
     },
+    capacityRatio: Number
 }, {
     timestamps: true,
     versionKey: false

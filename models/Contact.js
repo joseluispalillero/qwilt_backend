@@ -5,6 +5,8 @@ const contactSchema = new Schema({
     email: String,
     phone: String,
     photos: [String],
+    country: String,
+    state: String,
     type: {
         type: String,
         enum: ['Tenant', 'Landlord', 'Property Manager', 'Interested'],
