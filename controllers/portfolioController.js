@@ -1,35 +1,35 @@
-const Portfolio = require('../models/Portfolio')
+const { OK, INTERNAL_SERVER_ERROR } = require('http-status-codes');
+const Portfolio = require('../models/Portfolio');
 
-exports.createPortfolio = (req, res, next) => {
+exports.createPortfolio = (req, res) => {
+  Portfolio.create({ ...req.body })
+    .then((portfolio) => res.status(OK).json({ Portfolio: portfolio }))
+    .catch((err) => res.status(INTERNAL_SERVER_ERROR).json({ err }));
+};
 
-    Portfolio.create({...req.body })
-        .then(Portfolio => res.status(200).json({ Portfolio }))
-        .catch(err => res.status(500).json({ err }))
-}
+exports.getAllPortfolios = (req, res) => {
+  Portfolio.find().lean()
+    .then((Portfolios) => res.status(OK).json({ Portfolios }))
+    .catch((err) => res.status(INTERNAL_SERVER_ERROR).json({ err }));
+};
 
-exports.getAllPortfolios = (req, res, next) => {
-    Portfolio.find()
-        .then(Portfolios => res.status(200).json({ Portfolios }))
-        .catch(err => res.status(500).json({ err }))
-}
+exports.getOnePortfolio = (req, res) => {
+  const { id } = req.params;
+  Portfolio.findById(id).lean()
+    .then((portfolio) => res.status(OK).json({ Portfolio: portfolio }))
+    .catch((err) => res.status(INTERNAL_SERVER_ERROR).json({ err }));
+};
 
-exports.getOnePortfolio = (req, res, next) => {
-    const { id } = req.params
-    Portfolio.findById(id)
-        .then(Portfolio => res.status(200).json({ Portfolio }))
-        .catch(err => res.status(500).json({ err }))
-}
+exports.updatePortfolio = (req, res) => {
+  const { id } = req.params;
+  Portfolio.findByIdAndUpdate(id, { ...req.body }, { new: true })
+    .then((portfolio) => res.status(OK).json({ Portfolio: portfolio }))
+    .catch((err) => res.status(INTERNAL_SERVER_ERROR).json({ err }));
+};
 
-exports.updatePortfolio = (req, res, next) => {
-    const { id } = req.params
-    Portfolio.findByIdAndUpdate(id, {...req.body }, { new: true })
-        .then(Portfolio => res.status(200).json({ Portfolio }))
-        .catch(err => res.status(500).json({ err }))
-}
-
-exports.deletePortfolio = (req, res, next) => {
-    const { id } = req.params
-    Portfolio.findByIdAndDelete(id)
-        .then(Portfolio => res.status(200).json({ Portfolio }))
-        .catch(err => res.status(500).json({ err }))
-}
+exports.deletePortfolio = (req, res) => {
+  const { id } = req.params;
+  Portfolio.findByIdAndDelete(id)
+    .then((portfolio) => res.status(OK).json({ Portfolio: portfolio }))
+    .catch((err) => res.status(INTERNAL_SERVER_ERROR).json({ err }));
+};

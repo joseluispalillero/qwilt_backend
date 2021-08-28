@@ -2,21 +2,21 @@ const { Schema, model } = require('mongoose');
 const PLM = require('passport-local-mongoose');
 
 const userSchema = new Schema({
-    email: String,
-    firstName: String,
-    lastName: String,
-    address: String,
-    phone: Number,
-    mobile: Number,
-    img: String,
-    role: {
-        type: String,
-        enum: ['ADMIN'],
-        default: 'ADMIN'
-    },
+  email: String,
+  firstName: String,
+  lastName: String,
+  address: String,
+  phone: Number,
+  mobile: Number,
+  img: String,
+  role: {
+    type: String,
+    enum: ['ADMIN'],
+    default: 'ADMIN',
+  },
 }, {
-    timestamps: true,
-    versionKey: false
+  timestamps: true,
+  versionKey: false,
 });
 
 userSchema.plugin(PLM, { usernameField: 'email' });
