@@ -9,8 +9,8 @@ const contactSchema = new Schema({
   state: String,
   type: {
     type: String,
-    enum: ['Tenant', 'Landlord', 'Property Manager', 'Interested'],
-    default: 'Landlord',
+    enum: ['Tenant', 'Owner', 'Property Manager', 'Interested'],
+    default: 'Owner',
   },
   propertyId: {
     type: Schema.Types.ObjectId,

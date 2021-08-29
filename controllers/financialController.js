@@ -7,14 +7,14 @@ exports.createFinancial = (req, res, next) => {
 };
 
 exports.getAllFinancials = (req, res, next) => {
-  Financial.find()
+  Financial.find().lean()
     .then((Financials) => res.status(200).json({ Financials }))
     .catch((err) => res.status(500).json({ err }));
 };
 
 exports.getOneFinancial = (req, res, next) => {
   const { id } = req.params;
-  Financial.findById(id)
+  Financial.findById(id).lean()
     .then((Financial) => res.status(200).json({ Financial }))
     .catch((err) => res.status(500).json({ err }));
 };

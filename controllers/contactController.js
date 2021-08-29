@@ -7,14 +7,14 @@ exports.createContact = (req, res, next) => {
 };
 
 exports.getAllContacts = (req, res, next) => {
-  Contact.find()
+  Contact.find().lean()
     .then((Contacts) => res.status(200).json({ Contacts }))
     .catch((err) => res.status(500).json({ err }));
 };
 
 exports.getOneContact = (req, res, next) => {
   const { id } = req.params;
-  Contact.findById(id)
+  Contact.findById(id).lean()
     .then((Contact) => res.status(200).json({ Contact }))
     .catch((err) => res.status(500).json({ err }));
 };
@@ -34,7 +34,7 @@ exports.deleteContact = (req, res, next) => {
 };
 
 exports.getTypeContacts = (req, res, next) => {
-  Contact.find({ type: 'Interested', type: 'Tenant' })
+  Contact.find({ type: 'Interested', type: 'Tenant' }).lean()
     .then((Contact) => res.status(200).json({ Contact }))
     .catch((err) => res.status(500).json({ err }));
 };

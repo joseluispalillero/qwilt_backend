@@ -23,14 +23,14 @@ exports.createLease = (req, res) => {
 };
 
 exports.getAllLeases = (req, res) => {
-  Lease.find()
+  Lease.find().lean()
     .then((Leases) => res.status(OK).json({ Leases }))
     .catch((err) => res.status(INTERNAL_SERVER_ERROR).json({ err }));
 };
 
 exports.getOneLease = (req, res) => {
   const { id } = req.params;
-  Lease.findById(id)
+  Lease.findById(id).lean()
     .then((lease) => res.status(OK).json({ Lease: lease }))
     .catch((err) => res.status(INTERNAL_SERVER_ERROR).json({ err }));
 };
@@ -66,7 +66,7 @@ exports.deleteLease = async (req, res) => {
 };
 
 exports.getAllLeases = (req, res) => {
-  Lease.find()
+  Lease.find().lean()
     .then((Leases) => res.status(OK).json({ Leases }))
     .catch((err) => res.status(INTERNAL_SERVER_ERROR).json({ err }));
 };
