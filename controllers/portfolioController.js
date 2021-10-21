@@ -15,7 +15,7 @@ exports.getAllPortfolios = (req, res) => {
       Portfolios = await Promise.all( Portfolios.map( async (item) =>  {
         const owner = await User.findById(item.owner);
         return {...item,
-          owner: `${owner.firstName} ${owner.lastName}`.to,
+          owner: `${owner.firstName} ${owner.lastName}`,
           counterProperties: await Property.count({portfolioId: item._id})}
       }))
       res.status(OK).json({ Portfolios });
