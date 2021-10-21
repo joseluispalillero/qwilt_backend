@@ -7,3 +7,4 @@ npm-debug.log
 .idea
 # Environment Variables should NEVER be published
 .env
+.yarn.lock
