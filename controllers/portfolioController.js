@@ -1,5 +1,7 @@
 const { OK, INTERNAL_SERVER_ERROR } = require('http-status-codes');
 const Portfolio = require('../models/Portfolio');
+const Property = require('../models/Property');
+const User = require('../models/User');
 
 exports.createPortfolio = (req, res) => {
   Portfolio.create({ ...req.body })
@@ -9,8 +11,19 @@ exports.createPortfolio = (req, res) => {
 
 exports.getAllPortfolios = (req, res) => {
   Portfolio.find().lean()
-    .then((Portfolios) => res.status(OK).json({ Portfolios }))
-    .catch((err) => res.status(INTERNAL_SERVER_ERROR).json({ err }));
+    .then(async (Portfolios) => {
+      Portfolios = await Promise.all( Portfolios.map( async (item) =>  {
+        const owner = await User.findById(item.owner);
+        return {...item,
+          owner: `${owner.firstName} ${owner.lastName}`.to,
+          counterProperties: await Property.count({portfolioId: item._id})}
+      }))
+      res.status(OK).json({ Portfolios });
+    })
+    .catch((err) => {
+      console.log(err)
+      res.status(INTERNAL_SERVER_ERROR).json({ err })
+    });
 };
 
 exports.getOnePortfolio = (req, res) => {
